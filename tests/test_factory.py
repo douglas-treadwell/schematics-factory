@@ -15,6 +15,13 @@ class TestFactory(TestCase):
 
         my_instance.validate()
 
+    def test_alternative_syntax(self):
+        Person = model(name=StringType(), age=IntType())
+
+        person = Person(dict(name='Test', age=27))
+
+        person.validate()
+
     def test_nested_factory(self):
         my_model = model({
             'str': StringType(),

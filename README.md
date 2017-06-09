@@ -46,3 +46,17 @@ OuterModel = model({
 model_instance = OuterModel(input_)
 model_instance.validate()
 ```
+
+Alternative Syntax
+------------------
+
+Schema factory arguments can also be supplied as keyword
+arguments rather than a dictionary.
+
+```
+Person = model(name=StringType(), age=IntType())
+
+person = Person(dict(name='Test', age=27))
+
+person.validate()
+```
