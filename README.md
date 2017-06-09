@@ -60,3 +60,16 @@ person = Person(dict(name='Test', age=27))
 
 person.validate()
 ```
+
+For nested Models, a concise __nested()__ convenience function
+is provided to replace ModelType(model(...)) with nested(...).
+
+```
+from schematics_factory import model, nested
+
+Person = model(name=StringType(), pet=nested(name=StringType()))
+
+person = Person(dict(name='Test', pet=dict(name='Rover')))
+
+person.validate()
+```

@@ -1,6 +1,6 @@
 from unittest import TestCase
 from schematics.types import StringType, ModelType, IntType, BooleanType
-from schematics_factory import model
+from schematics_factory import model, nested
 
 
 class TestFactory(TestCase):
@@ -19,6 +19,13 @@ class TestFactory(TestCase):
         Person = model(name=StringType(), age=IntType())
 
         person = Person(dict(name='Test', age=27))
+
+        person.validate()
+
+    def test_alternative_syntax_nesting(self):
+        Person = model(name=StringType(), pet=nested(name=StringType()))
+
+        person = Person(dict(name='Test', pet=dict(name='Rover')))
 
         person.validate()
 
