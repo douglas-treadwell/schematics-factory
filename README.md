@@ -78,3 +78,33 @@ person = Person(dict(name='Test', pet=dict(name='Rover')))
 
 person.validate()
 ```
+
+Nested models can also be provided as plain dictionary literals.
+
+```
+Person = model(name=StringType(), pet=dict(name=StringType()))
+
+person = Person(dict(name='Test', pet=dict(name='Rover')))
+
+person.validate()
+```
+
+Or equivalently...
+
+```
+Person = model({
+    'name': StringType(),
+    'pet': {
+        'name': StringType()
+    }
+})
+
+person = Person({
+    'name': 'Test',
+    'pet': {
+        'name': 'Rover'
+    }
+})
+
+person.validate()
+```

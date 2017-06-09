@@ -3,7 +3,13 @@ from schematics.types import ModelType
 
 
 def model(_schema_dict=None, **kwargs):
-    return ModelMeta('AnonymousModel', (Model,), _schema_dict or kwargs)
+    _schema_dict = dict(_schema_dict or kwargs)  # create copy for changes
+
+    for key, value in _schema_dict.items():
+        if isinstance(value, dict):
+            _schema_dict[key] = nested_model(value)
+
+    return ModelMeta('AnonymousModel', (Model,), _schema_dict)
 
 
 model_factory = model  # alternative import name

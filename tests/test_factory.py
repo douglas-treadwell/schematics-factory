@@ -46,6 +46,30 @@ class TestFactory(TestCase):
 
         my_instance.validate()
 
+    def test_nested_dict_literals(self):
+        Person = model(name=StringType(),
+                       pet=dict(name=StringType(required=True)))
+
+        person = Person(dict(name='Test', pet=dict(name='Rover')))
+
+        person.validate()
+
+        Person = model({
+            'name': StringType(),
+            'pet': {
+                'name': StringType(required=True)
+            }
+        })
+
+        person = Person({
+            'name': 'Test',
+            'pet': {
+                'name': 1
+            }
+        })
+
+        person.validate()
+
     def test_readme_example(self):
         OuterModel = model({
             'outer_str': StringType(),
