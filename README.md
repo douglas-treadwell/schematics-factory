@@ -33,6 +33,8 @@ So, this library provides a convenient syntax for defining
 deeply nested Models.
 
 ```
+from schematics_factory import model
+
 OuterModel = model({
     'outer_str': StringType(),
     'outer_nested': ModelType(model({
@@ -46,6 +48,8 @@ OuterModel = model({
 model_instance = OuterModel(input_)
 model_instance.validate()
 ```
+
+The model() function can also be imported as _model_factory_.
 
 Alternative Syntax
 ------------------
@@ -63,6 +67,7 @@ person.validate()
 
 For nested Models, a concise __nested()__ convenience function
 is provided to replace ModelType(model(...)) with nested(...).
+The nested() function can also be imported as _nested_model_.
 
 ```
 from schematics_factory import model, nested
