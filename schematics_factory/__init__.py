@@ -2,6 +2,9 @@ from schematics.models import Model, ModelMeta
 from schematics.types import ModelType
 
 
+__version__ = '0.1.0'
+
+
 def model(_schema_dict=None, **kwargs):
     _schema_dict = dict(_schema_dict or kwargs)  # create copy for changes
 
