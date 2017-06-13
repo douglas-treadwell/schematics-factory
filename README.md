@@ -2,6 +2,17 @@ Schematics Factory
 ==================
 
 
+Installation
+------------
+
+```
+pip install schematics-factory
+```
+
+
+Overview
+--------
+
 Inspired by [Voluptuous](https://github.com/alecthomas/voluptuous).
 
 It's sometimes inconvenient to define
@@ -50,6 +61,7 @@ model_instance.validate()
 ```
 
 The model() function can also be imported as _model_factory_.
+
 
 Alternative Syntax
 ------------------
